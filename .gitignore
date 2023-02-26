@@ -1,0 +1,4 @@
+# 以下文件将不被git所管理
+.hbuilderx
+node_modules
+unpackage/dist
