@@ -1,0 +1,27 @@
+{
+  "name": "uni-ffmusic",
+  "version": "1.0.0",
+  "description": "![image-20230226200710237](C:\\Users\\fly20\\AppData\\Roaming\\Typora\\typora-user-images\\image-20230226200710237.png)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linyf9/uni-ffmusic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linyf9/uni-ffmusic/issues"
+  },
+  "homepage": "https://github.com/linyf9/uni-ffmusic#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.10.14",
+    "audio-loader": "^1.0.3",
+    "mitt": "^3.0.0",
+    "moment": "^2.29.4",
+    "pinia": "^2.0.32"
+  }
+}

@@ -1,0 +1,111 @@
+<template>
+  <!-- 列表区域 -->
+  <view class="listContainer">
+    <!-- 列表头部 -->
+    <view class="listHeader">
+      <view class="left">
+        <text class="iconfont icon-bofang"></text>
+        <text>全部播放({{ list.length }})</text>
+      </view>
+    </view>
+    <!-- 内容区 -->
+    <scroll-view scroll-y="true" class="listScroll">
+      <view class="scrollItem" v-for="(item, index) in list" :key="item.song_id" @click="toSongDetail(item.song_id, index)">
+        <image :src="item.song_imgpath"></image>
+        <view class="musicInfo">
+          <text class="musicName">{{ item.song_songname }}</text>
+          <text class="author">{{ item.singer_name }}</text>
+        </view>
+        <text class="iconfont icon-gengduo2"></text>
+      </view>
+    </scroll-view>
+  </view>
+</template>
+
+<script setup>
+import { useMusic } from '../../store/index.js';
+
+const musicStore = useMusic();
+
+const props = defineProps({
+  list: {
+    type: Array,
+    default: [],
+    required: false
+  }
+});
+
+// 跳转到歌曲详情页
+const toSongDetail = async (song_id, index) => {
+  musicStore.index = index;
+  uni.navigateTo({
+    url: `/pages/songDetail/songDetail?song_id=${song_id}`
+  });
+};
+</script>
+
+<style lang="scss" scoped>
+.listContainer {
+  position: relative;
+  top: -20rpx;
+  padding: 0 20rpx;
+  border-radius: 30rpx;
+  background: #ffffff;
+  .listHeader {
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    .left {
+      height: 80rpx;
+      display: flex;
+      align-items: center;
+    }
+    .iconfont {
+      font-size: 70rpx;
+      color: #2e7797;
+    }
+  }
+
+  .listScroll {
+    height: calc(100vh - 400rpx);
+    padding-bottom: 20rpx;
+    .scrollItem {
+      position: relative;
+      display: flex;
+      margin-bottom: 20rpx;
+      image {
+        width: 100rpx;
+        height: 100rpx;
+        border-radius: 8rpx;
+      }
+      .musicInfo {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20rpx;
+        text {
+          height: 50rpx;
+          line-height: 50rpx;
+          font-size: 26rpx;
+          max-width: 500rpx;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .author {
+          font-size: 24rpx;
+        }
+      }
+      .iconfont {
+        position: absolute;
+        right: 0;
+        width: 100rpx;
+        height: 100rpx;
+        line-height: 100rpx;
+        text-align: right;
+      }
+    }
+  }
+}
+</style>
