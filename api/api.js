@@ -148,3 +148,9 @@ export const getAllSongs = (keyword) => request({
   url: `/song?keyword=${keyword}`,
   method: 'GET'
 })
+
+// 18. 根据歌手id获取歌手信息
+export const getSingerInfo = (singer_id) => request({
+  url: `/singer/${singer_id}`,
+  method: 'GET'
+})

@@ -6,8 +6,10 @@
       <image src="../../static/images/cd.png" class="cd-img" :class="state.isPlay && 'disc-animation'"></image>
       <image :src="playList[playListIndex].song_imgpath" class="song-img" :class="state.isPlay && 'disc-animation'"></image>
     </view>
-    <view class="singer" v-if="!isLyricShow" @click="isLyricShow = !isLyricShow">
-      <text>{{ playList[playListIndex].singer_name }} - {{ playList[playListIndex].song_songname }}</text>
+    <!-- @click="isLyricShow = !isLyricShow" -->
+    <view class="singer" v-if="!isLyricShow">
+      <text @click="toSingerDetail(playList[playListIndex].song_singerid)">{{ playList[playListIndex].singer_name }}</text>
+      <text>&nbsp;-&nbsp;{{ playList[playListIndex].song_songname }}</text>
     </view>
     <view class="lyric" v-if="isLyricShow" id="musicLyric" @click="isLyricShow = !isLyricShow">
       <text
@@ -124,6 +126,13 @@ let lyric = computed(() => {
 // 根据歌曲id获取/修改歌词
 const getSongLyricById = async musicId => {
   musicStore.updateLyric(musicId);
+};
+
+// 点击歌手名称，跳转到歌手详情页
+const toSingerDetail = song_singerid => {
+  uni.navigateTo({
+    url: `/pages/singerDetail/singerDetail?song_singerid=${song_singerid}`
+  });
 };
 
 // 点击按钮，控制音乐的播放/暂停

@@ -83,7 +83,16 @@
       }
 
     }
-  ],
+      ,{
+            "path" : "pages/singerDetail/singerDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "ffmusic",
