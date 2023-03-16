@@ -84,18 +84,27 @@ const register = async () => {
     return;
   }
 
-  uni.showToast({
-    title: '注册成功',
-    duration: 1200,
-    success() {
-      setTimeout(() => {
-        // 注册之后跳转到登录页
-        uni.navigateTo({
-          url: '/pages/login/login'
-        });
-      }, 1200);
-    }
-  });
+  // 发请求，后端验证是否注册成功
+  let res = await userRegister({ phone, password, nickname });
+  if (res.code === 200) {
+    uni.showToast({
+      title: '注册成功',
+      duration: 1200,
+      success() {
+        setTimeout(() => {
+          // 注册之后跳转到登录页
+          uni.navigateTo({
+            url: '/pages/login/login'
+          });
+        }, 1200);
+      }
+    });
+  } else {
+    uni.showToast({
+      title: '注册失败，请重新注册',
+      icon: 'none'
+    });
+  }
 };
 
 // 已有账号，点击跳转到登录

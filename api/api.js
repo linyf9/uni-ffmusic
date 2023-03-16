@@ -77,7 +77,7 @@ export const userRegister = ({
   password,
   nickname
 }) => request({
-  url: `/user/front/register?user_name=${phone}&password=${password}&nickname=${nickname}`,
+  url: `/user/front/register?user_name=${phone}&nickname=${nickname}&password=${password}`,
   method: 'POST',
 })
 

@@ -16,6 +16,7 @@ function service(options = {}) {
 
   return new Promise((resolved, rejected) => {
     options.success = (res) => {
+      console.log(res.data);
       // 如果请求回来的状态码不是200，则执行以下操作
       if (res.data.code !== 200) {
         uni.showToast({
